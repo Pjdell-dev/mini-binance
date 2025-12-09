@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<ruleset name="Mini-Binance PHP Coding Standards">
+    <description>PHP_CodeSniffer ruleset for Mini-Binance</description>
+
+    <!-- Include PSR-12 coding standard -->
+    <rule ref="PSR12"/>
+
+    <!-- Show progress -->
+    <arg value="p"/>
+
+    <!-- Show sniff codes in all reports -->
+    <arg value="s"/>
+
+    <!-- Use colors in output -->
+    <arg name="colors"/>
+
+    <!-- Check these file extensions -->
+    <arg name="extensions" value="php"/>
+
+    <!-- Include all PHP files in app directory -->
+    <file>app</file>
+    <file>routes</file>
+    <file>database</file>
+    <file>tests</file>
+
+    <!-- Exclude vendor directory -->
+    <exclude-pattern>vendor</exclude-pattern>
+    <exclude-pattern>bootstrap/cache</exclude-pattern>
+    <exclude-pattern>storage</exclude-pattern>
+    <exclude-pattern>node_modules</exclude-pattern>
+
+    <!-- Additional rules for security -->
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array">
+                <element key="eval" value="null"/>
+                <element key="create_function" value="null"/>
+                <element key="exec" value="null"/>
+                <element key="system" value="null"/>
+                <element key="passthru" value="null"/>
+                <element key="shell_exec" value="null"/>
+                <element key="assert" value="null"/>
+                <element key="md5" value="hash"/>
+                <element key="sha1" value="hash"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Enforce type hints -->
+    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint"/>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint"/>
+</ruleset>

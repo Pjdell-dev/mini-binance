@@ -1,0 +1,15 @@
+parameters:
+    level: 5
+    paths:
+        - app
+        - database
+        - routes
+    excludePaths:
+        - vendor
+        - bootstrap/cache
+        - storage
+    tmpDir: storage/phpstan
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        - '#Unsafe usage of new static#'
